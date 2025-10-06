@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bitte Captcha bestätigen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="center">
+    <div class="card">
+      <h1>Prüfung</h1>
+      <p class="desc">Bitte bestätige, dass du kein Roboter bist</p>
+
+      <div class="captcha" id="captcha">
+        <label class="checkbox" id="fakeCheckbox" tabindex="0" role="button" aria-pressed="false">
+          <input type="checkbox" id="cb" aria-hidden="true" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="text">Ich bin kein Roboter</span>
+        </label>
+
+        <div class="image-grid" id="imageGrid" aria-hidden="true">
+          <!-- kleine Fake-Bilder -->
+          <div class="img">🚗</div>
+          <div class="img">🚙</div>
+          <div class="img">🛵</div>
+          <div class="img">🚲</div>
+          <div class="img">🚌</div>
+          <div class="img">🚕</div>
+        </div>
+
+        <button id="verifyBtn" class="btn" disabled>Verifizieren</button>
+      </div>
+
+      <div id="status" class="status" aria-live="polite"></div>
+    </div>
+
+    <footer class="note">Nur ein kleiner Streich — nichts Ernstes.</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
