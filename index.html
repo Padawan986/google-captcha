@@ -8,16 +8,18 @@
 </head>
 <body>
   <div id="cf-wrapper">
-    <div class="cf-container">
+    <div class="cf-alert cf-error">
       <div class="cf-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="180" height="36" viewBox="0 0 512 512" fill="#F48120">
-          <circle cx="256" cy="256" r="256"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#f48120" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="24"/>
         </svg>
         <span class="cf-text">Cloudflare</span>
       </div>
-      <h1>Checking your browser before accessing this site.</h1>
-      <p>This process is automatic. Your browser will redirect to your requested content shortly.</p>
-      <p>Please allow up to 5 seconds…</p>
+      <h1 class="cf-title">Checking your browser before accessing this site.</h1>
+      <p class="cf-subtitle">
+        This process is automatic. Your browser will redirect to your requested content shortly.<br>
+        Please allow up to 5 seconds…
+      </p>
 
       <div class="captcha-box" id="captchaBox">
         <div class="checkbox" id="check"></div>
@@ -26,6 +28,10 @@
 
       <div class="loader" id="loader"></div>
       <div class="status" id="status"></div>
+
+      <div class="cf-footer">
+        <p>Performance &amp; security by <strong>Cloudflare</strong></p>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>
