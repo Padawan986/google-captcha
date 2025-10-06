@@ -12,9 +12,9 @@
     "description": "Zweites Video aus der Root"
   },
   {
-    "file": "video3.webm",
+    "file": "video3.mp4",
     "thumb": "video3.jpg",
     "title": "Video 3",
-    "description": "Drittes Video (WebM)"
+    "description": "Drittes Video"
   }
 ]
