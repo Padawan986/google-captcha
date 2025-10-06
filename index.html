@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meine Video-Galerie</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudflare Style Gallery</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🎬 Meine Video-Galerie</h1>
-  <div class="gallery">
-    <!-- Beispiel-Videos -->
-    <div class="video-card">
-      <video controls>
-        <source src="/videos/video1.mp4" type="video/mp4">
-        Dein Browser unterstützt kein HTML5-Video.
-      </video>
-      <a class="download-btn" href="/videos/video1.mp4" download>⬇️ Download</a>
+
+<div id="cf-wrapper">
+  <div class="cf-alert">
+    <div class="cf-logo">
+      <svg width="48" height="48" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="24" fill="#f48120"/>
+      </svg>
+      <span class="cf-text">Cloudflare</span>
+    </div>
+    <h1>Checking your browser before accessing this site.</h1>
+    <p>This process is automatic. Please allow up to 5 seconds…</p>
+
+    <div class="captcha-wrap">
+      <div class="captcha-box" id="captchaBox" tabindex="0" role="button" aria-pressed="false">
+        <div class="checkbox" id="check"></div>
+        <span class="captcha-label">I'm not a robot</span>
+      </div>
+      <div class="loader" id="loader" aria-hidden="true"></div>
+      <div class="status" id="status"></div>
     </div>
 
-    <div class="video-card">
-      <video controls>
-        <source src="/videos/video2.mp4" type="video/mp4">
-        Dein Browser unterstützt kein HTML5-Video.
-      </video>
-      <a class="download-btn" href="/videos/video2.mp4" download>⬇️ Download</a>
-    </div>
-
-    <div class="video-card">
-      <video controls>
-        <source src="/videos/video3.mp4" type="video/mp4">
-        Dein Browser unterstützt kein HTML5-Video.
-      </video>
-      <a class="download-btn" href="/videos/video3.mp4" download>⬇️ Download</a>
-    </div>
+    <div class="cf-footer"><p>Performance &amp; security by <strong>Cloudflare</strong></p></div>
   </div>
+</div>
+
+<!-- Video Gallery Overlay -->
+<div id="galleryOverlay" class="overlay" aria-hidden="true">
+  <div class="galleryContent">
+    <h2>Video Gallery</h2>
+    <div id="videoGrid" class="videoGrid"></div>
+    <button id="closeGallery">Close</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
