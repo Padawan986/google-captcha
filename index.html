@@ -1,43 +1,86 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bitte Captcha bestätigen</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sicherheitsprüfung</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: #f6f8fa;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #d1d5da;
+      padding: 16px 24px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #666;
+      border-radius: 3px;
+      display: inline-block;
+      position: relative;
+    }
+    .checkbox.checked::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0px;
+      width: 6px;
+      height: 12px;
+      border: solid #2ea44f;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .status {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-  <main class="center">
-    <div class="card">
-      <h1>Prüfung</h1>
-      <p class="desc">Bitte bestätige, dass du kein Roboter bist</p>
-
-      <div class="captcha" id="captcha">
-        <label class="checkbox" id="fakeCheckbox" tabindex="0" role="button" aria-pressed="false">
-          <input type="checkbox" id="cb" aria-hidden="true" />
-          <span class="box" aria-hidden="true"></span>
-          <span class="text">Ich bin kein Roboter</span>
-        </label>
-
-        <div class="image-grid" id="imageGrid" aria-hidden="true">
-          <!-- kleine Fake-Bilder -->
-          <div class="img">🚗</div>
-          <div class="img">🚙</div>
-          <div class="img">🛵</div>
-          <div class="img">🚲</div>
-          <div class="img">🚌</div>
-          <div class="img">🚕</div>
-        </div>
-
-        <button id="verifyBtn" class="btn" disabled>Verifizieren</button>
-      </div>
-
-      <div id="status" class="status" aria-live="polite"></div>
+  <div>
+    <div class="box" id="captchaBox">
+      <div class="checkbox" id="check"></div>
+      <span>Ich bin kein Roboter</span>
     </div>
+    <div class="status" id="status"></div>
+  </div>
 
-    <footer class="note">Nur ein kleiner Streich — nichts Ernstes.</footer>
-  </main>
+  <script>
+    const box = document.getElementById('captchaBox');
+    const check = document.getElementById('check');
+    const status = document.getElementById('status');
 
-  <script src="script.js"></script>
+    let done = false;
+
+    box.addEventListener('click', () => {
+      if (done) return;
+      done = true;
+      check.classList.add('checked');
+      status.textContent = "Überprüfung läuft…";
+      
+      setTimeout(() => status.textContent = "Verbindung wird geprüft…", 1000);
+      setTimeout(() => status.textContent = "Fast fertig…", 2000);
+      setTimeout(() => {
+        status.textContent = "Erfolgreich!";
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
