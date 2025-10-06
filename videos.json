@@ -1,0 +1,14 @@
+[
+  {
+    "file": "videos/video1.mp4",
+    "thumb": "thumbs/video1.jpg",
+    "title": "Funny clip 1",
+    "description": "Kurze Beschreibung 1"
+  },
+  {
+    "file": "videos/video2.mp4",
+    "thumb": "thumbs/video2.jpg",
+    "title": "Funny clip 2",
+    "description": "Kurze Beschreibung 2"
+  }
+]
