@@ -34,32 +34,34 @@ captchaBox.addEventListener('click', async () => {
 
 function wait(ms){ return new Promise(res=>setTimeout(res, ms)); }
 
-// Beispiel-Videos aus Root/Uploads
-const videos = [
-  { filename:"video1.mp4", title:"Video 1", uploader:"User1" },
-  { filename:"video2.mp4", title:"Video 2", uploader:"User2" },
-  { filename:"video3.mp4", title:"Video 3", uploader:"User3" }
-];
-
-function openGallery(){
+async function openGallery(){
   videoGrid.innerHTML="";
-  videos.forEach(v=>{
-    const tile = document.createElement("div");
-    tile.className="videoTile";
-    tile.innerHTML=`
-      <h4>${v.title}</h4>
-      <video controls>
-        <source src="./${v.filename}" type="video/mp4">
-        Dein Browser unterstützt kein Video.
-      </video>
-      <p>Uploader: ${v.uploader}</p>
-      <a class="download-btn" href="./${v.filename}" download>⬇️ Download</a>
-    `;
-    videoGrid.appendChild(tile);
-  });
 
-  galleryOverlay.style.display="flex";
-  galleryOverlay.setAttribute("aria-hidden","false");
+  try {
+    const res = await fetch("videos.json");
+    const videos = await res.json();
+
+    videos.forEach(v=>{
+      const tile = document.createElement("div");
+      tile.className="videoTile";
+      tile.innerHTML=`
+        <h4>${v.title}</h4>
+        <video controls>
+          <source src="./${v.filename}" type="video/mp4">
+          Dein Browser unterstützt kein Video.
+        </video>
+        <p>Uploader: ${v.uploader}</p>
+        <a class="download-btn" href="./${v.filename}" download>⬇️ Download</a>
+      `;
+      videoGrid.appendChild(tile);
+    });
+
+    galleryOverlay.style.display="flex";
+    galleryOverlay.setAttribute("aria-hidden","false");
+  } catch(err){
+    console.error("Fehler beim Laden der Videos:", err);
+    videoGrid.innerHTML = "<p>Fehler: Videos konnten nicht geladen werden.</p>";
+  }
 }
 
 closeGallery.addEventListener('click', ()=>{
