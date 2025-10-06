@@ -1,39 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Just a moment...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="cf-wrapper">
-    <div class="cf-alert cf-error">
+    <div class="cf-alert">
       <div class="cf-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#f48120" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="24"/>
-        </svg>
+        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#f48120"/></svg>
         <span class="cf-text">Cloudflare</span>
       </div>
+
       <h1 class="cf-title">Checking your browser before accessing this site.</h1>
-      <p class="cf-subtitle">
-        This process is automatic. Your browser will redirect to your requested content shortly.<br>
-        Please allow up to 5 seconds…
-      </p>
+      <p class="cf-subtitle">This process is automatic. Your browser will redirect to your requested content shortly.<br>
+        Please allow up to 5 seconds…</p>
 
-      <div class="captcha-box" id="captchaBox">
-        <div class="checkbox" id="check"></div>
-        <span>I'm not a robot</span>
+      <div class="captcha-wrap">
+        <div class="captcha-box" id="captchaBox" role="button" tabindex="0" aria-pressed="false">
+          <div class="checkbox" id="check" aria-hidden="true"></div>
+          <span class="captcha-label">I'm not a robot</span>
+        </div>
+        <div class="loader" id="loader" aria-hidden="true"></div>
+        <div class="status" id="status" aria-live="polite"></div>
       </div>
-
-      <div class="loader" id="loader"></div>
-      <div class="status" id="status"></div>
 
       <div class="cf-footer">
         <p>Performance &amp; security by <strong>Cloudflare</strong></p>
       </div>
     </div>
   </div>
+
+  <!-- Galerie Overlay -->
+  <div id="galleryOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-content" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <button id="closeGallery" class="close-btn" aria-label="Schließen">&times;</button>
+      <h2 id="galleryTitle">Choose a video from the gallery</h2>
+      <div id="videoGrid" class="grid"></div>
+    </div>
+  </div>
+
+  <!-- Video Lightbox -->
+  <div id="playerOverlay" class="overlay" aria-hidden="true">
+    <div class="player-content" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
+      <button id="closePlayer" class="close-btn" aria-label="Schließen">&times;</button>
+      <h2 id="playerTitle"></h2>
+      <video id="player" controls playsinline></video>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
