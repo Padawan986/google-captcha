@@ -2,41 +2,52 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sicherheitsprüfung</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     body {
       margin: 0;
+      background: #f0f2f5;
+      font-family: system-ui, sans-serif;
+      color: #333;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      font-family: sans-serif;
-      background: #f6f8fa;
     }
-    .box {
+    .panel {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 40px 50px;
+      max-width: 420px;
+      text-align: center;
+    }
+    .cf-logo {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 24px;
+      color: #f48120; /* Cloudflare orange */
+    }
+    .captcha-box {
       display: flex;
       align-items: center;
       gap: 12px;
-      border: 1px solid #d1d5da;
-      padding: 16px 24px;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      justify-content: center;
+      margin: 20px 0;
       cursor: pointer;
     }
     .checkbox {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border: 2px solid #666;
       border-radius: 3px;
-      display: inline-block;
       position: relative;
     }
     .checkbox.checked::after {
       content: "";
       position: absolute;
-      left: 4px;
+      left: 5px;
       top: 0px;
       width: 6px;
       height: 12px;
@@ -45,41 +56,63 @@
       transform: rotate(45deg);
     }
     .status {
-      margin-top: 12px;
-      text-align: center;
+      margin-top: 18px;
       font-size: 14px;
-      color: #444;
+      color: #555;
+      min-height: 20px;
+    }
+    .loader {
+      margin: 18px auto 0;
+      border: 4px solid #eee;
+      border-top: 4px solid #f48120;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="box" id="captchaBox">
+  <div class="panel">
+    <div class="cf-logo">Cloudflare</div>
+    <p>Checking your browser before accessing this site…</p>
+
+    <div class="captcha-box" id="captchaBox">
       <div class="checkbox" id="check"></div>
       <span>Ich bin kein Roboter</span>
     </div>
+
+    <div class="loader" id="loader"></div>
     <div class="status" id="status"></div>
   </div>
 
   <script>
-    const box = document.getElementById('captchaBox');
-    const check = document.getElementById('check');
-    const status = document.getElementById('status');
-
+    const box = document.getElementById("captchaBox");
+    const check = document.getElementById("check");
+    const loader = document.getElementById("loader");
+    const status = document.getElementById("status");
     let done = false;
 
-    box.addEventListener('click', () => {
+    box.addEventListener("click", () => {
       if (done) return;
       done = true;
-      check.classList.add('checked');
+      check.classList.add("checked");
       status.textContent = "Überprüfung läuft…";
-      
-      setTimeout(() => status.textContent = "Verbindung wird geprüft…", 1000);
-      setTimeout(() => status.textContent = "Fast fertig…", 2000);
-      setTimeout(() => {
-        status.textContent = "Erfolgreich!";
+      loader.style.display = "block";
+
+      setTimeout(()=>status.textContent = "Sicherheitsprüfung…", 1200);
+      setTimeout(()=>status.textContent = "Browser wird überprüft…", 2200);
+      setTimeout(()=>status.textContent = "Fast fertig…", 3200);
+      setTimeout(()=>{
+        status.textContent = "Verifiziert!";
+        loader.style.display = "none";
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-      }, 3000);
+      }, 4200);
     });
   </script>
 </body>
