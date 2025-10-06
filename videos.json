@@ -1,14 +1,20 @@
 [
   {
-    "file": "videos/video1.mp4",
-    "thumb": "thumbs/video1.jpg",
-    "title": "Funny clip 1",
-    "description": "Kurze Beschreibung 1"
+    "file": "video1.mp4",
+    "thumb": "video1.jpg",
+    "title": "Video 1",
+    "description": "Erstes Video aus der Root"
   },
   {
-    "file": "videos/video2.mp4",
-    "thumb": "thumbs/video2.jpg",
-    "title": "Funny clip 2",
-    "description": "Kurze Beschreibung 2"
+    "file": "video2.mp4",
+    "thumb": "video2.jpg",
+    "title": "Video 2",
+    "description": "Zweites Video aus der Root"
+  },
+  {
+    "file": "video3.webm",
+    "thumb": "video3.jpg",
+    "title": "Video 3",
+    "description": "Drittes Video (WebM)"
   }
 ]
