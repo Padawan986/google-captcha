@@ -1,56 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Just a moment...</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meine Video-Galerie</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="cf-wrapper">
-    <div class="cf-alert">
-      <div class="cf-logo">
-        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#f48120"/></svg>
-        <span class="cf-text">Cloudflare</span>
-      </div>
+  <h1>🎬 Meine Video-Galerie</h1>
+  <div class="gallery">
+    <!-- Beispiel-Videos -->
+    <div class="video-card">
+      <video controls>
+        <source src="/videos/video1.mp4" type="video/mp4">
+        Dein Browser unterstützt kein HTML5-Video.
+      </video>
+      <a class="download-btn" href="/videos/video1.mp4" download>⬇️ Download</a>
+    </div>
 
-      <h1 class="cf-title">Checking your browser before accessing this site.</h1>
-      <p class="cf-subtitle">This process is automatic. Your browser will redirect to your requested content shortly.<br>
-        Please allow up to 5 seconds…</p>
+    <div class="video-card">
+      <video controls>
+        <source src="/videos/video2.mp4" type="video/mp4">
+        Dein Browser unterstützt kein HTML5-Video.
+      </video>
+      <a class="download-btn" href="/videos/video2.mp4" download>⬇️ Download</a>
+    </div>
 
-      <div class="captcha-wrap">
-        <div class="captcha-box" id="captchaBox" role="button" tabindex="0" aria-pressed="false">
-          <div class="checkbox" id="check" aria-hidden="true"></div>
-          <span class="captcha-label">I'm not a robot</span>
-        </div>
-        <div class="loader" id="loader" aria-hidden="true"></div>
-        <div class="status" id="status" aria-live="polite"></div>
-      </div>
-
-      <div class="cf-footer">
-        <p>Performance &amp; security by <strong>Cloudflare</strong></p>
-      </div>
+    <div class="video-card">
+      <video controls>
+        <source src="/videos/video3.mp4" type="video/mp4">
+        Dein Browser unterstützt kein HTML5-Video.
+      </video>
+      <a class="download-btn" href="/videos/video3.mp4" download>⬇️ Download</a>
     </div>
   </div>
-
-  <!-- Galerie Overlay -->
-  <div id="galleryOverlay" class="overlay" aria-hidden="true">
-    <div class="overlay-content" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
-      <button id="closeGallery" class="close-btn" aria-label="Schließen">&times;</button>
-      <h2 id="galleryTitle">Choose a video from the gallery</h2>
-      <div id="videoGrid" class="grid"></div>
-    </div>
-  </div>
-
-  <!-- Video Lightbox -->
-  <div id="playerOverlay" class="overlay" aria-hidden="true">
-    <div class="player-content" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
-      <button id="closePlayer" class="close-btn" aria-label="Schließen">&times;</button>
-      <h2 id="playerTitle"></h2>
-      <video id="player" controls playsinline></video>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
