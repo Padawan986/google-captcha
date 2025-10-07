@@ -1,46 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloudflare Style Gallery</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sicherheitsprüfung</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="cf-wrapper">
-  <div class="cf-alert">
-    <div class="cf-logo">
-      <svg width="48" height="48" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="24" fill="#f48120"/>
-      </svg>
-      <span class="cf-text">Cloudflare</span>
+  <div class="cf-container">
+    <div class="cf-box" id="captchaBox">
+      <div class="cf-checkbox" id="check"></div>
+      <span class="cf-label">Ich bin kein Roboter</span>
     </div>
-    <h1>Checking your browser before accessing this site.</h1>
-    <p>This process is automatic. Please allow up to 5 seconds…</p>
-
-    <div class="captcha-wrap">
-      <div class="captcha-box" id="captchaBox" tabindex="0" role="button" aria-pressed="false">
-        <div class="checkbox" id="check"></div>
-        <span class="captcha-label">I'm not a robot</span>
-      </div>
-      <div class="loader" id="loader" aria-hidden="true"></div>
-      <div class="status" id="status"></div>
-    </div>
-
-    <div class="cf-footer"><p>Performance &amp; security by <strong>Cloudflare</strong></p></div>
+    <div class="cf-status" id="status"></div>
   </div>
-</div>
 
-<!-- Video Gallery Overlay -->
-<div id="galleryOverlay" class="overlay" aria-hidden="true">
-  <div class="galleryContent">
-    <h2>Video Gallery</h2>
-    <div id="videoGrid" class="videoGrid"></div>
-    <button id="closeGallery">Close</button>
-  </div>
-</div>
+  <script>
+    const box = document.getElementById('captchaBox');
+    const check = document.getElementById('check');
+    const status = document.getElementById('status');
 
-<script src="script.js"></script>
+    // 🎥 Liste deiner "Überraschungs"-Videos
+    const videos = [
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Rickroll
+      "https://www.youtube.com/watch?v=9bZkp7q19f0", // Gangnam Style
+      "https://www.youtube.com/watch?v=j5a0jTc9S10", // Sandstorm
+      "https://www.youtube.com/watch?v=oHg5SJYRHA0", // Zweiter Rickroll-Link
+      "https://www.youtube.com/watch?v=ZZ5LpwO-An4"  // He-Man HeYaYa
+    ];
+
+    let done = false;
+
+    box.addEventListener('click', () => {
+      if (done) return;
+      done = true;
+      check.classList.add('checked');
+      status.textContent = "Überprüfung läuft…";
+
+      setTimeout(() => status.textContent = "Browser wird überprüft…", 1000);
+      setTimeout(() => status.textContent = "Fast fertig…", 2000);
+      setTimeout(() => {
+        status.textContent = "Erfolgreich!";
+        // 👉 Zufälliges Video auswählen
+        const link = videos[Math.floor(Math.random() * videos.length)];
+        window.location.href = link;
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
