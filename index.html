@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloudflare Style Gallery</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Modern Gallery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="cf-wrapper">
-  <div class="cf-alert">
-    <div class="cf-logo">
-      <svg width="48" height="48" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="24" fill="#f48120"/>
-      </svg>
-      <span class="cf-text">Cloudflare</span>
+  <section class="captcha-section">
+    <div class="captcha-box" id="captchaBox">
+      <div class="checkbox" id="check"></div>
+      <span>Ich bin kein Roboter</span>
     </div>
-    <h1>Checking your browser before accessing this site.</h1>
-    <p>This process is automatic. Please allow up to 5 seconds…</p>
+    <div class="status" id="status"></div>
+  </section>
 
-    <div class="captcha-wrap">
-      <div class="captcha-box" id="captchaBox" tabindex="0" role="button" aria-pressed="false">
-        <div class="checkbox" id="check"></div>
-        <span class="captcha-label">I'm not a robot</span>
-      </div>
-      <div class="loader" id="loader" aria-hidden="true"></div>
-      <div class="status" id="status"></div>
+  <!-- Gallery -->
+  <div class="overlay" id="galleryOverlay" aria-hidden="true">
+    <div class="gallery">
+      <h2>📂 Deine Video-Galerie</h2>
+      <div class="videoGrid" id="videoGrid"></div>
+      <button id="closeGallery">✖ Schließen</button>
     </div>
-
-    <div class="cf-footer"><p>Performance &amp; security by <strong>Cloudflare</strong></p></div>
   </div>
-</div>
 
-<!-- Video Gallery Overlay -->
-<div id="galleryOverlay" class="overlay" aria-hidden="true">
-  <div class="galleryContent">
-    <h2>Video Gallery</h2>
-    <div id="videoGrid" class="videoGrid"></div>
-    <button id="closeGallery">Close</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
