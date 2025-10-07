@@ -1,6 +1,5 @@
 const captchaBox = document.getElementById('captchaBox');
 const check = document.getElementById('check');
-const loader = document.getElementById('loader');
 const status = document.getElementById('status');
 
 const galleryOverlay = document.getElementById('galleryOverlay');
@@ -9,27 +8,18 @@ const closeGallery = document.getElementById('closeGallery');
 
 let done = false;
 
-// Fake-Captcha Klick
 captchaBox.addEventListener('click', async () => {
   if(done) return;
   done = true;
   check.classList.add('checked');
-  status.textContent = "Checking…";
-  loader.style.display = "block";
+  status.textContent = "Überprüfung läuft…";
 
-  try {
-    await wait(1000); status.textContent="Verifying your browser…";
-    await wait(1000); status.textContent="Almost done…";
-    await wait(1000); status.textContent="Loading gallery…";
+  await wait(1500);
+  status.textContent = "Alles klar ✅";
 
-    loader.style.display = "none";
-    status.textContent = "";
-    openGallery();
-  } catch(err){
-    loader.style.display = "none";
-    status.textContent="Error.";
-    console.error(err);
-  }
+  await wait(800);
+  status.textContent = "";
+  openGallery();
 });
 
 function wait(ms){ return new Promise(res=>setTimeout(res, ms)); }
@@ -59,7 +49,7 @@ async function openGallery(){
     galleryOverlay.style.display="flex";
     galleryOverlay.setAttribute("aria-hidden","false");
   } catch(err){
-    console.error("Fehler beim Laden der Videos:", err);
+    console.error("Fehler beim Laden:", err);
     videoGrid.innerHTML = "<p>Fehler: Videos konnten nicht geladen werden.</p>";
   }
 }
