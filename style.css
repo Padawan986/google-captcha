@@ -1,68 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4ecf7 100%);
-  color: #111;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: #f9fafb;
   min-height: 100vh;
-}
-
-/* ---------- Cloudflare Captcha ---------- */
-.cf-alert {
-  text-align: center;
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: 40px auto;
-  background: linear-gradient(145deg, #ffffff, #f0f0f5);
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.cf-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  padding: 40px;
 }
 
-.cf-text {
-  font-weight: 600;
-  font-size: 1.5rem;
-  background: linear-gradient(90deg, #f48120, #ff9f50);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h1 {
+/* --- Captcha Box --- */
+.captcha-section {
+  background: #ffffff;
   color: #111;
-  margin-bottom: 10px;
-}
-
-p {
-  color: #555;
-}
-
-.captcha-wrap {
-  margin-top: 25px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  text-align: center;
 }
 
 .captcha-box {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  border: 2px solid #ddd;
+  border: 2px solid #e5e7eb;
   padding: 14px 20px;
   border-radius: 10px;
   cursor: pointer;
-  background: linear-gradient(120deg, #fafafa, #f3f3f8);
+  background: #f9fafb;
   transition: all 0.25s ease;
 }
 
 .captcha-box:hover {
   border-color: #f48120;
-  transform: translateY(-2px);
+  background: #fff4ec;
 }
 
 .checkbox {
@@ -70,6 +49,7 @@ p {
   height: 20px;
   border: 2px solid #999;
   border-radius: 4px;
+  transition: background 0.2s;
 }
 
 .checked {
@@ -83,46 +63,45 @@ p {
   font-weight: 500;
 }
 
-/* ---------- Gallery Overlay ---------- */
+/* --- Gallery Overlay --- */
 .overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
+  inset: 0;
+  background: rgba(17,24,39,0.9);
   display: none;
   justify-content: center;
   align-items: center;
-  overflow: auto;
   padding: 30px;
+  z-index: 100;
 }
 
-.galleryContent {
-  width: 95%;
+.gallery {
+  width: 100%;
   max-width: 1100px;
-  background: linear-gradient(135deg, #ffffff, #f3f6fb);
+  background: #1e293b;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
-.galleryContent h2 {
+.gallery h2 {
   text-align: center;
   margin-bottom: 25px;
   font-size: 1.8rem;
-  background: linear-gradient(90deg, #2563eb, #9333ea, #ec4899);
+  background: linear-gradient(90deg, #3b82f6, #9333ea, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .videoGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap: 20px;
 }
 
 .videoTile {
-  background: linear-gradient(160deg, #ffffff, #f9fafc);
-  border: 1px solid #e5e7eb;
+  background: linear-gradient(160deg, #334155, #1e293b);
+  border: 1px solid #475569;
   border-radius: 12px;
   padding: 14px;
   text-align: center;
@@ -130,8 +109,8 @@ p {
 }
 
 .videoTile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
 .videoTile video {
@@ -143,7 +122,7 @@ p {
 .download-btn {
   display: inline-block;
   padding: 9px 16px;
-  background: linear-gradient(90deg, #2563eb, #9333ea);
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
@@ -152,7 +131,7 @@ p {
 }
 
 .download-btn:hover {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 #closeGallery {
@@ -164,12 +143,12 @@ p {
   color: #fff;
   cursor: pointer;
   font-weight: 600;
-  transition: opacity 0.25s;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  transition: background 0.25s;
 }
 
 #closeGallery:hover {
-  opacity: 0.85;
+  background: linear-gradient(90deg, #333, #555);
 }
